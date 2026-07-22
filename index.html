@@ -663,7 +663,7 @@
                     const option = document.createElement('option');
                     option.value = code;
                     option.textContent = data.name[currentLang];
-                    if (code === 'ON') option.selected = true; 
+                    if (code === 'BC') option.selected = true; // Set to BC for testing Vancouver 
                     provinceSelect.appendChild(option);
                 }
                 populateCities(provinceSelect.value);
@@ -854,73 +854,49 @@
 
             // --- Industrial-Grade Redundant Fetcher ---
             async function fetchWeatherFeed(targetUrl) {
-                // Cache buster prevents proxies from returning stale or broken firewall pages
-                const cacheBustUrl = `${targetUrl}?t=${Date.now()}`;
-                const encodedUrl = encodeURIComponent(cacheBustUrl);
+                // Encode URL safely for proxies. Removed "?t=" cache buster as ECCC servers reject it with 404s.
+                const encodedUrl = encodeURIComponent(targetUrl);
                 
                 // Multi-layered proxy fallback system for high availability
                 const proxies = [
-                    { type: 'json', url: `https://api.allorigins.win/get?url=${encodedUrl}` },
-                    { type: 'raw', url: `https://api.codetabs.com/v1/proxy?quest=${cacheBustUrl}` },
-                    { type: 'raw', url: `https://corsproxy.io/?${encodedUrl}` }
+                    `https://api.allorigins.win/raw?url=${encodedUrl}`,
+                    `https://corsproxy.io/?${encodedUrl}`,
+                    `https://api.codetabs.com/v1/proxy?quest=${encodedUrl}`,
+                    `https://thingproxy.freeboard.io/fetch/${targetUrl}`
                 ];
 
                 // RACE CONDITION: Fire all requests concurrently for absolute minimum latency
-                const fetchPromises = proxies.map(async (proxy) => {
+                const fetchPromises = proxies.map(async (proxyUrl) => {
                     const startTime = performance.now();
                     
-                    // AbortController can be used here if you want to cancel losers, but simple fetch is fine
-                    const response = await fetch(proxy.url, { cache: 'no-store' });
+                    // Force cache bypass via headers instead of URL mutation
+                    const response = await fetch(proxyUrl, { 
+                        cache: 'no-store',
+                        headers: {
+                            'Accept': 'application/xml, text/xml, */*'
+                        }
+                    });
+                    
                     if (!response.ok) throw new Error(`Proxy HTTP ${response.status}`);
                     
-                    let xmlText = '';
-                    if (proxy.type === 'json') {
-                        const data = await response.json();
-                        if (!data.contents) throw new Error('Empty JSON contents');
-                        xmlText = data.contents;
-                    } else {
-                        xmlText = await response.text();
-                    }
+                    const xmlText = await response.text();
 
-                    // Validate payload to ensure it's actual RSS/XML, not a 403 HTML firewall page
+                    // Strict validation: Ensure it's actual ECCC XML, not a proxy HTML error/firewall page
                     if (!xmlText.includes('<feed') && !xmlText.includes('<rss') && !xmlText.includes('<?xml')) {
-                        throw new Error('Invalid XML payload received');
+                        throw new Error('Invalid XML payload received (Firewall blocked)');
                     }
 
                     const pingTime = Math.round(performance.now() - startTime);
-                    return { xmlText, pingTime, simulated: false };
+                    return { xmlText, pingTime };
                 });
 
                 try {
                     // Promise.any resolves immediately when the FIRST proxy successfully returns data.
-                    // If one proxy hangs or is blocked by a firewall, it doesn't slow down the app.
                     return await Promise.any(fetchPromises);
-                    
                 } catch (aggregateError) {
-                    // This block ONLY fires if ALL proxies fail simultaneously
-                    console.warn('All proxies failed or network is offline. Entering SIMULATED DEMO MODE.');
-                    
-                    // Fallback: Generate a realistic simulated payload for Pitch/Demo resilience
-                    const isFr = targetUrl.includes('_f.xml');
-                    const simTemp = (Math.random() * 10 + 10).toFixed(1); // Generate random believable temp
-                    
-                    const simXml = `<?xml version="1.0" encoding="UTF-8"?>
-                    <feed xmlns="http://www.w3.org/2005/Atom">
-                        <entry>
-                            <title>${isFr ? `Conditions actuelles : ${simTemp}&#xB0;C, Orageux` : `Current Conditions: ${simTemp}&#xB0;C, Thunderstorms`}</title>
-                            <summary type="html"><![CDATA[${isFr ? `Température : ${simTemp}&#xB0;C` : `Temperature: ${simTemp}&#xB0;C`}]]></summary>
-                        </entry>
-                        <entry>
-                            <title>${isFr ? `AVERTISSEMENT : Avertissement d'orage violent en vigueur` : `WARNING: Severe Thunderstorm Warning in effect`}</title>
-                            <summary type="html"><![CDATA[${isFr ? `Les conditions sont propices à la formation d'orages dangereux pouvant produire des rafales destructrices et de la grêle.` : `Conditions are favourable for the development of dangerous thunderstorms that may be capable of producing damaging wind gusts and large hail.`}]]></summary>
-                        </entry>
-                        <entry>
-                            <title>${isFr ? `Ce soir : Nuageux avec averses.` : `Tonight: Cloudy with showers.`}</title>
-                            <summary type="html"><![CDATA[${isFr ? `Nuageux. Averses débutant ce soir.` : `Cloudy. Showers beginning this evening.`}]]></summary>
-                        </entry>
-                    </feed>`;
-
-                    return { xmlText: simXml, pingTime: 0, simulated: true };
+                    console.error('CRITICAL: All proxies failed. Connection blocked by firewall, adblocker, or network drop.', aggregateError);
+                    // Industrial-grade apps fail transparently. No fake data.
+                    throw new Error("LIVE_DATA_UNAVAILABLE");
                 }
             }
 
@@ -940,8 +916,12 @@
 
                 try {
                     transcriptText.textContent = "ESTABLISHING SECURE CONNECTION...";
+                    
+                    // Fetch real data. Destructure payload directly.
                     const { xmlText, pingTime } = await fetchWeatherFeed(targetXmlUrl);
+                    
                     dataApiPing.textContent = `${pingTime} ms`;
+                    dataApiPing.style.color = '#a3e67c';
 
                     const xmlDoc = new DOMParser().parseFromString(xmlText, 'text/xml');
                     const entries = Array.from(xmlDoc.querySelectorAll('entry'));
@@ -1006,9 +986,17 @@
 
                 } catch (err) {
                     console.error(err);
-                    dataApiPing.textContent = 'ERR';
-                    lcdMarquee.textContent = 'SIGNAL ERROR - UNABLE TO FETCH DATA';
-                    transcriptText.textContent = 'ERROR FETCHING DATA FOR THIS STATION. PLEASE STANDBY.';
+                    dataApiPing.textContent = 'OFFLINE';
+                    dataApiPing.style.color = '#ff4d4d'; // Switch ping text to Red
+                    lcdMarquee.textContent = 'SIGNAL ERROR - NO LIVE DATA AVAILABLE. CHECK NETWORK.';
+                    transcriptText.textContent = 'CRITICAL ERROR: Unable to establish a secure connection to Environment Canada servers. Please verify network connectivity and ensure ad-blockers are disabled.';
+                    
+                    if (isPoweredOn) {
+                        const errorSpeech = currentLang === 'en' 
+                            ? `Critical error. Weatheradio station ${region.name} is unable to establish a secure connection to Environment Canada. Live data is unavailable.`
+                            : `Erreur critique. La station Météofil ${region.name} ne peut pas établir de connexion avec Environnement Canada.`;
+                        speakBroadcast(errorSpeech, false);
+                    }
                 }
             }
 
@@ -1047,8 +1035,11 @@
                 };
             }
 
-            if ('serviceWorker' in navigator) {
+            // Register Service Worker with safe environment guard
+            if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
                 navigator.serviceWorker.register('sw.js').catch(err => console.log('SW reg failed:', err));
+            } else {
+                console.log('Service Worker skipped: Not running in an HTTP/HTTPS environment.');
             }
         });
     </script>
