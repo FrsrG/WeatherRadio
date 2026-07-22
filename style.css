@@ -1,0 +1,349 @@
+/* Northern Ontario Weatheradio Simulator Stylesheet */
+/* Era Target: 2008-2012 Web 2.0 / Frutiger Aero */
+
+body {
+    background: radial-gradient(circle at center, #dcedf7 0%, #a2b8c6 100%);
+    font-family: "Lucida Grande", "Segoe UI", Calibri, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    color: #333;
+}
+
+/* Layout Wrapper for Radio + Transcript Pane */
+.app-viewport {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1050px;
+    width: 100%;
+}
+
+/* --- Main Radio Chassis --- */
+#radio-chassis.radio-unit {
+    background: linear-gradient(to bottom, #ffffff 0%, #f4f4f4 100%);
+    border: 2px solid #e0e0e0;
+    border-radius: 24px;
+    padding: 30px;
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.25), 
+        inset 0 2px 0 rgba(255, 255, 255, 1), 
+        inset 0 -3px 8px rgba(0, 0, 0, 0.08);
+}
+
+header.radio-header {
+    margin-bottom: 20px;
+}
+
+.header-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header.radio-header h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: #444;
+    text-shadow: 1px 1px 0px #ffffff;
+}
+
+header.radio-header .subtitle {
+    margin: 4px 0 0 0;
+    font-size: 0.85rem;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+/* Language Toggle Buttons */
+.lang-toggle-container {
+    display: flex;
+    background: #dcdcdc;
+    border-radius: 15px;
+    padding: 2px;
+    border: 1px solid #b5b5b5;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.lang-btn {
+    border: none;
+    background: transparent;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #666;
+}
+
+.lang-btn.active {
+    background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+    color: #000;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* --- Warning LEDs --- */
+#alert-indicators.led-panel {
+    display: flex;
+    justify-content: space-around;
+    background: linear-gradient(to bottom, #e8e8e8 0%, #dcdcdc 100%);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #b3b3b3;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.15), 0 1px 0 rgba(255, 255, 255, 1);
+    margin-bottom: 20px;
+}
+
+.led-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.led {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background: rgba(200, 200, 200, 0.4); 
+    box-shadow: inset 0 3px 4px rgba(255, 255, 255, 0.7), inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+#led-advisory.led.amber {
+    background: radial-gradient(circle at 35% 35%, #ffd700, #ff8c00);
+    box-shadow: 0 0 18px 6px rgba(255, 215, 0, 0.65), inset 0 4px 5px rgba(255, 255, 255, 0.9);
+}
+
+#led-watch.led.orange {
+    background: radial-gradient(circle at 35% 35%, #ffa500, #ff4500);
+    box-shadow: 0 0 18px 6px rgba(255, 165, 0, 0.65), inset 0 4px 5px rgba(255, 255, 255, 0.9);
+}
+
+#led-warning.led.red {
+    background: radial-gradient(circle at 35% 35%, #ff4d4d, #b30000);
+    box-shadow: 0 0 18px 6px rgba(255, 0, 0, 0.65), inset 0 4px 5px rgba(255, 255, 255, 0.9);
+}
+
+.led-label {
+    font-size: 0.75rem;
+    color: #555;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* --- LCD Display --- */
+#lcd-screen.lcd-panel {
+    background-color: #030614;
+    border: 4px solid #1a1a1a;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 8px 15px rgba(0, 0, 0, 1), 0 1px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+#lcd-marquee.scrolling-text {
+    font-family: "Courier New", Courier, monospace;
+    color: #00f0ff;
+    font-size: 1.05rem;
+    font-weight: bold;
+    text-shadow: 0 0 5px #00f0ff, 0 0 12px #00f0ff;
+    white-space: nowrap;
+}
+
+/* --- Controls & Tuning --- */
+.control-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label.control-label {
+    font-size: 0.85rem;
+    color: #444;
+    font-weight: bold;
+}
+
+select#region-selector.tuner-dropdown {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #999;
+    background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- Audio Controls --- */
+.primary-controls {
+    display: flex;
+    gap: 12px;
+}
+
+button.btn.action-btn {
+    flex: 1;
+    padding: 12px 8px;
+    border: 1px solid #777;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 48%, #cccccc 52%, #f4f4f4 100%);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 1), 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+div.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    background: #f0f0f0;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+input#volume-slider.slider {
+    flex: 1;
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input#volume-slider.slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    background: #bbb;
+    border-radius: 3px;
+}
+
+input#volume-slider.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #ffffff 0%, #cccccc 100%);
+    border: 1px solid #666;
+    margin-top: -7px;
+    cursor: pointer;
+}
+
+/* --- Diagnostic Telemetry Pane --- */
+#radio-telemetry.diagnostic-panel {
+    margin-top: 20px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 15px;
+    color: #e0e0e0;
+    font-family: "Courier New", Courier, monospace;
+}
+
+#radio-telemetry.diagnostic-panel h2 {
+    margin: 0 0 12px 0;
+    font-size: 0.95rem;
+    color: #a0a0a0;
+    border-bottom: 1px solid #333;
+    padding-bottom: 6px;
+}
+
+div.telemetry-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+div.telemetry-item {
+    display: flex;
+    justify-content: space-between;
+    background: #111;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+span.telemetry-label {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+span.telemetry-value {
+    color: #a3e67c;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+/* --- Live Transcript Pane (Contrasting White/Gray Unit) --- */
+#transcript-chassis.transcript-panel {
+    background: linear-gradient(to bottom, #ffffff 0%, #ebebeb 100%);
+    border: 2px solid #d0d0d0;
+    border-radius: 24px;
+    padding: 25px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18), inset 0 2px 0 rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.transcript-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.transcript-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #444;
+}
+
+.status-badge {
+    font-size: 0.7rem;
+    font-weight: bold;
+    background: #00f0ff;
+    color: #000;
+    padding: 3px 8px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+}
+
+/* Black Nifty Display Screen with Blue Text */
+.transcript-screen {
+    background-color: #030614;
+    border: 4px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 20px;
+    min-height: 380px;
+    max-height: 480px;
+    overflow-y: auto;
+    box-shadow: inset 0 5px 12px rgba(0, 0, 0, 0.9);
+}
+
+.transcript-content {
+    font-family: "Courier New", Courier, monospace;
+    color: #00f0ff;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    text-shadow: 0 0 6px rgba(0, 240, 255, 0.6);
+    word-break: break-word;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northern Ontario Weatheradio Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main Content Wrapper for Side-by-Side Desktop Layout -->
+    <div class="app-viewport">
+        
+        <!-- Main Radio Chassis -->
+        <main id="radio-chassis" class="radio-unit" aria-label="Weatheradio Interface">
+            
+            <header class="radio-header">
+                <div class="header-top-row">
+                    <h1 id="ui-title">Weatheradio Canada</h1>
+                    <!-- Bilingual Language Toggle -->
+                    <div class="lang-toggle-container" role="group" aria-label="Language Selector">
+                        <button id="btn-lang-en" class="lang-btn active" aria-pressed="true">EN</button>
+                        <button id="btn-lang-fr" class="lang-btn" aria-pressed="false">FR</button>
+                    </div>
+                </div>
+                <p id="ui-subtitle" class="subtitle">Northern Ontario Edition</p>
+            </header>
+
+            <!-- Warning LEDs (WCAG Assertive Alert Panel) -->
+            <section id="alert-indicators" class="led-panel" role="alert" aria-live="assertive" aria-label="Weather Alert Status Lights">
+                <div class="led-wrapper">
+                    <span id="led-advisory" class="led" aria-hidden="true"></span>
+                    <span id="ui-label-advisory" class="led-label">Advisories</span>
+                </div>
+                <div class="led-wrapper">
+                    <span id="led-watch" class="led" aria-hidden="true"></span>
+                    <span id="ui-label-watch" class="led-label">Watches</span>
+                </div>
+                <div class="led-wrapper">
+                    <span id="led-warning" class="led" aria-hidden="true"></span>
+                    <span id="ui-label-warning" class="led-label">Warnings</span>
+                </div>
+            </section>
+
+            <!-- LCD Display -->
+            <section id="lcd-screen" class="lcd-panel" aria-live="polite" aria-label="LCD Forecast Display">
+                <div id="lcd-marquee" class="scrolling-text">
+                    STANDBY - AWAITING USER ACTIVATION...
+                </div>
+            </section>
+
+            <!-- Location Tuner -->
+            <section id="tuner-section" class="control-group">
+                <label for="region-selector" id="ui-label-region" class="control-label">Broadcast Region:</label>
+                <select id="region-selector" class="tuner-dropdown" name="region">
+                    <option value="sault-ste-marie">Sault Ste. Marie</option>
+                    <option value="sudbury">Sudbury</option>
+                    <option value="thunder-bay">Thunder Bay</option>
+                    <option value="timmins">Timmins</option>
+                    <option value="north-bay">North Bay</option>
+                    <option value="kenora">Kenora</option>
+                </select>
+            </section>
+
+            <!-- Audio Controls -->
+            <section id="audio-controls" class="control-group">
+                <div class="primary-controls">
+                    <button id="btn-power" class="btn action-btn power-on">
+                        Listen Live / Power On
+                    </button>
+                    <button id="btn-stop" class="btn action-btn mute-stop">
+                        Mute / Stop
+                    </button>
+                </div>
+                
+                <div class="volume-control">
+                    <label for="volume-slider" id="ui-label-volume" class="control-label">Volume</label>
+                    <input type="range" id="volume-slider" class="slider" min="0" max="100" value="70" step="1">
+                </div>
+            </section>
+
+            <!-- Diagnostic Telemetry Pane -->
+            <section id="radio-telemetry" class="diagnostic-panel" aria-label="Radio Telemetry Data">
+                <h2 id="ui-hdr-diagnostics">System Diagnostics</h2>
+                <div class="telemetry-grid">
+                    <div class="telemetry-item">
+                        <span id="ui-lbl-freq" class="telemetry-label">Frequency:</span>
+                        <span id="data-frequency" class="telemetry-value">162.400 MHz</span>
+                    </div>
+                    <div class="telemetry-item">
+                        <span id="ui-lbl-same" class="telemetry-label">SAME Header Decode:</span>
+                        <span id="data-same-header" class="telemetry-value">[Pending]</span>
+                    </div>
+                    <div class="telemetry-item">
+                        <span id="ui-lbl-tts" class="telemetry-label">TTS Voice Engine:</span>
+                        <span id="data-tts-engine" class="telemetry-value">Native Browser</span>
+                    </div>
+                    <div class="telemetry-item">
+                        <span id="ui-lbl-ping" class="telemetry-label">API Ping:</span>
+                        <span id="data-api-ping" class="telemetry-value">-- ms</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Live Narrator Transcript Chassis -->
+        <aside id="transcript-chassis" class="transcript-panel" aria-label="Live Broadcast Transcript">
+            <header class="transcript-header">
+                <h2 id="ui-hdr-transcript">Live Broadcast Transcript</h2>
+                <span class="status-badge" id="transcript-status">STANDBY</span>
+            </header>
+            <div id="transcript-display" class="transcript-screen" aria-live="polite">
+                <p id="transcript-text" class="transcript-content">
+                    [SYSTEM READY. CLICK POWER TO BEGIN BROADCAST]
+                </p>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
