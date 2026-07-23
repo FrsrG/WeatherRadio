@@ -4,97 +4,97 @@ document.addEventListener('DOMContentLoaded', () => {
         'AB': { 
             name: { en: 'Alberta', fr: 'Alberta' }, 
             cities: { 
-                'calgary': {name: 'Calgary', rssCode: 'ab-52', frequency: '162.400 MHz', sameCode: '048060'}, 
-                'edmonton': {name: 'Edmonton', rssCode: 'ab-50', frequency: '162.400 MHz', sameCode: '048110'},
-                'fort-mcmurray': {name: 'Fort McMurray', rssCode: 'ab-21', frequency: '162.400 MHz', sameCode: '048160'}
+                'calgary': {name: 'Calgary', rssCode: 'ab-52', frequency: '162.400 MHz', sameCode: '048060', lat: 51.0447, lon: -114.0719}, 
+                'edmonton': {name: 'Edmonton', rssCode: 'ab-50', frequency: '162.400 MHz', sameCode: '048110', lat: 53.5461, lon: -113.4938},
+                'fort-mcmurray': {name: 'Fort McMurray', rssCode: 'ab-21', frequency: '162.400 MHz', sameCode: '048160', lat: 56.7268, lon: -111.3803}
             } 
         },
         'BC': { 
             name: { en: 'British Columbia', fr: 'Colombie-Britannique' }, 
             cities: { 
-                'vancouver': {name: 'Vancouver', rssCode: 'bc-74', frequency: '162.400 MHz', sameCode: '059015'}, 
-                'victoria': {name: 'Victoria', rssCode: 'bc-85', frequency: '162.400 MHz', sameCode: '059017'},
-                'kelowna': {name: 'Kelowna', rssCode: 'bc-48', frequency: '162.550 MHz', sameCode: '059035'}
+                'vancouver': {name: 'Vancouver', rssCode: 'bc-74', frequency: '162.400 MHz', sameCode: '059015', lat: 49.2827, lon: -123.1207}, 
+                'victoria': {name: 'Victoria', rssCode: 'bc-85', frequency: '162.400 MHz', sameCode: '059017', lat: 48.4284, lon: -123.3656},
+                'kelowna': {name: 'Kelowna', rssCode: 'bc-48', frequency: '162.550 MHz', sameCode: '059035', lat: 49.8880, lon: -119.4960}
             } 
         },
         'MB': { 
             name: { en: 'Manitoba', fr: 'Manitoba' }, 
             cities: { 
-                'winnipeg': {name: 'Winnipeg', rssCode: 'mb-38', frequency: '162.550 MHz', sameCode: '046110'},
-                'brandon': {name: 'Brandon', rssCode: 'mb-11', frequency: '162.400 MHz', sameCode: '046070'}
+                'winnipeg': {name: 'Winnipeg', rssCode: 'mb-38', frequency: '162.550 MHz', sameCode: '046110', lat: 49.8951, lon: -97.1384},
+                'brandon': {name: 'Brandon', rssCode: 'mb-11', frequency: '162.400 MHz', sameCode: '046070', lat: 49.8485, lon: -99.9501}
             } 
         },
         'NB': { 
             name: { en: 'New Brunswick', fr: 'Nouveau-Brunswick' }, 
             cities: { 
-                'fredericton': {name: 'Fredericton', rssCode: 'nb-29', frequency: '162.400 MHz', sameCode: '013030'}, 
-                'moncton': {name: 'Moncton', rssCode: 'nb-36', frequency: '162.400 MHz', sameCode: '013040'} 
+                'fredericton': {name: 'Fredericton', rssCode: 'nb-29', frequency: '162.400 MHz', sameCode: '013030', lat: 45.9636, lon: -66.6431}, 
+                'moncton': {name: 'Moncton', rssCode: 'nb-36', frequency: '162.400 MHz', sameCode: '013040', lat: 46.0898, lon: -64.7782} 
             } 
         },
         'NL': { 
             name: { en: 'Newfoundland and Labrador', fr: 'Terre-Neuve-et-Labrador' }, 
             cities: { 
-                'st-johns': {name: "St. John's", rssCode: 'nd-46', frequency: '162.400 MHz', sameCode: '010010'},
-                'corner-brook': {name: 'Corner Brook', rssCode: 'nd-20', frequency: '162.550 MHz', sameCode: '010040'}
+                'st-johns': {name: "St. John's", rssCode: 'nd-46', frequency: '162.400 MHz', sameCode: '010010', lat: 47.5615, lon: -52.7126},
+                'corner-brook': {name: 'Corner Brook', rssCode: 'nd-20', frequency: '162.550 MHz', sameCode: '010040', lat: 48.9500, lon: -57.9500}
             } 
         },
         'NS': { 
             name: { en: 'Nova Scotia', fr: 'Nouvelle-Écosse' }, 
             cities: { 
-                'halifax': {name: 'Halifax', rssCode: 'ns-19', frequency: '162.550 MHz', sameCode: '012040'},
-                'sydney': {name: 'Sydney', rssCode: 'ns-42', frequency: '162.400 MHz', sameCode: '012060'}
+                'halifax': {name: 'Halifax', rssCode: 'ns-19', frequency: '162.550 MHz', sameCode: '012040', lat: 44.6476, lon: -63.5728},
+                'sydney': {name: 'Sydney', rssCode: 'ns-42', frequency: '162.400 MHz', sameCode: '012060', lat: 46.1389, lon: -60.1933}
             } 
         },
         'NT': { 
             name: { en: 'Northwest Territories', fr: 'Territoires du Nord-Ouest' }, 
             cities: { 
-                'yellowknife': {name: 'Yellowknife', rssCode: 'nt-24', frequency: '162.400 MHz', sameCode: '061010'} 
+                'yellowknife': {name: 'Yellowknife', rssCode: 'nt-24', frequency: '162.400 MHz', sameCode: '061010', lat: 62.4540, lon: -114.3718} 
             } 
         },
         'NU': { 
             name: { en: 'Nunavut', fr: 'Nunavut' }, 
             cities: { 
-                'iqaluit': {name: 'Iqaluit', rssCode: 'nu-21', frequency: '162.400 MHz', sameCode: '062010'} 
+                'iqaluit': {name: 'Iqaluit', rssCode: 'nu-21', frequency: '162.400 MHz', sameCode: '062010', lat: 63.7467, lon: -68.5170} 
             } 
         },
         'ON': { 
             name: { en: 'Ontario', fr: 'Ontario' }, 
             cities: {
-                'toronto': {name: 'Toronto', rssCode: 'on-143', frequency: '162.400 MHz', sameCode: '035300'},
-                'ottawa': {name: 'Ottawa', rssCode: 'on-118', frequency: '162.400 MHz', sameCode: '035500'},
-                'sault-ste-marie': { name: 'Sault Ste. Marie', rssCode: 'on-5', frequency: '162.550 MHz', sameCode: '035570' },
-                'sudbury': { name: 'Sudbury', rssCode: 'on-40', frequency: '162.400 MHz', sameCode: '035530' },
-                'thunder-bay': { name: 'Thunder Bay', rssCode: 'on-62', frequency: '162.550 MHz', sameCode: '035580' },
-                'timmins': { name: 'Timmins', rssCode: 'on-121', frequency: '162.475 MHz', sameCode: '035560' },
-                'north-bay': { name: 'North Bay', rssCode: 'on-107', frequency: '162.400 MHz', sameCode: '035480' },
-                'kenora': { name: 'Kenora', rssCode: 'on-160', frequency: '162.400 MHz', sameCode: '035600' }
+                'toronto': {name: 'Toronto', rssCode: 'on-143', frequency: '162.400 MHz', sameCode: '035300', lat: 43.7001, lon: -79.4163},
+                'ottawa': {name: 'Ottawa', rssCode: 'on-118', frequency: '162.400 MHz', sameCode: '035500', lat: 45.4215, lon: -75.6972},
+                'sault-ste-marie': { name: 'Sault Ste. Marie', rssCode: 'on-5', frequency: '162.550 MHz', sameCode: '035570', lat: 46.5219, lon: -84.3461 },
+                'sudbury': { name: 'Sudbury', rssCode: 'on-40', frequency: '162.400 MHz', sameCode: '035530', lat: 46.4917, lon: -80.9930 },
+                'thunder-bay': { name: 'Thunder Bay', rssCode: 'on-62', frequency: '162.550 MHz', sameCode: '035580', lat: 48.3809, lon: -89.2477 },
+                'timmins': { name: 'Timmins', rssCode: 'on-121', frequency: '162.475 MHz', sameCode: '035560', lat: 48.4758, lon: -81.3305 },
+                'north-bay': { name: 'North Bay', rssCode: 'on-107', frequency: '162.400 MHz', sameCode: '035480', lat: 46.3091, lon: -79.4608 },
+                'kenora': { name: 'Kenora', rssCode: 'on-160', frequency: '162.400 MHz', sameCode: '035600', lat: 49.7674, lon: -94.4894 }
             } 
         },
         'PE': { 
             name: { en: 'Prince Edward Island', fr: 'Île-du-Prince-Édouard' }, 
             cities: { 
-                'charlottetown': {name: 'Charlottetown', rssCode: 'pe-5', frequency: '162.550 MHz', sameCode: '011020'} 
+                'charlottetown': {name: 'Charlottetown', rssCode: 'pe-5', frequency: '162.550 MHz', sameCode: '011020', lat: 46.2382, lon: -63.1311} 
             } 
         },
         'QC': { 
             name: { en: 'Quebec', fr: 'Québec' }, 
             cities: { 
-                'montreal': {name: 'Montreal', rssCode: 'qc-147', frequency: '162.550 MHz', sameCode: '024060'}, 
-                'quebec-city': {name: 'Quebec City', rssCode: 'qc-133', frequency: '162.400 MHz', sameCode: '024020'},
-                'gatineau': {name: 'Gatineau', rssCode: 'qc-67', frequency: '162.550 MHz', sameCode: '024080'}
+                'montreal': {name: 'Montreal', rssCode: 'qc-147', frequency: '162.550 MHz', sameCode: '024060', lat: 45.5017, lon: -73.5673}, 
+                'quebec-city': {name: 'Quebec City', rssCode: 'qc-133', frequency: '162.400 MHz', sameCode: '024020', lat: 46.8139, lon: -71.2080},
+                'gatineau': {name: 'Gatineau', rssCode: 'qc-67', frequency: '162.550 MHz', sameCode: '024080', lat: 45.4765, lon: -75.7013}
             } 
         },
         'SK': { 
             name: { en: 'Saskatchewan', fr: 'Saskatchewan' }, 
             cities: { 
-                'regina': {name: 'Regina', rssCode: 'sk-32', frequency: '162.400 MHz', sameCode: '047060'}, 
-                'saskatoon': {name: 'Saskatoon', rssCode: 'sk-40', frequency: '162.400 MHz', sameCode: '047110'} 
+                'regina': {name: 'Regina', rssCode: 'sk-32', frequency: '162.400 MHz', sameCode: '047060', lat: 50.4452, lon: -104.6189}, 
+                'saskatoon': {name: 'Saskatoon', rssCode: 'sk-40', frequency: '162.400 MHz', sameCode: '047110', lat: 52.1332, lon: -106.6700} 
             } 
         },
         'YT': { 
             name: { en: 'Yukon', fr: 'Yukon' }, 
             cities: { 
-                'whitehorse': {name: 'Whitehorse', rssCode: 'yt-16', frequency: '162.400 MHz', sameCode: '060010'} 
+                'whitehorse': {name: 'Whitehorse', rssCode: 'yt-16', frequency: '162.400 MHz', sameCode: '060010', lat: 60.7212, lon: -135.0568} 
             } 
         }
     };
@@ -363,6 +363,43 @@ document.addEventListener('DOMContentLoaded', () => {
         window.speechSynthesis.speak(utterance);
     }
 
+    // WMO Weather Interpretation Codes
+    const WEATHER_CODES = {
+        en: {
+            0: "Clear sky", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
+            45: "Fog", 48: "Depositing rime fog",
+            51: "Light drizzle", 53: "Moderate drizzle", 55: "Dense drizzle",
+            56: "Light freezing drizzle", 57: "Dense freezing drizzle",
+            61: "Slight rain", 63: "Moderate rain", 65: "Heavy rain",
+            66: "Light freezing rain", 67: "Heavy freezing rain",
+            71: "Slight snow fall", 73: "Moderate snow fall", 75: "Heavy snow fall",
+            77: "Snow grains",
+            80: "Slight rain showers", 81: "Moderate rain showers", 82: "Violent rain showers",
+            85: "Slight snow showers", 86: "Heavy snow showers",
+            95: "Thunderstorm", 96: "Thunderstorm with slight hail", 99: "Thunderstorm with heavy hail"
+        },
+        fr: {
+            0: "Ciel dégagé", 1: "Généralement clair", 2: "Partiellement nuageux", 3: "Couvert",
+            45: "Brouillard", 48: "Brouillard givrant",
+            51: "Bruine légère", 53: "Bruine modérée", 55: "Bruine dense",
+            56: "Bruine verglaçante légère", 57: "Bruine verglaçante dense",
+            61: "Pluie faible", 63: "Pluie modérée", 65: "Pluie forte",
+            66: "Pluie verglaçante légère", 67: "Pluie verglaçante forte",
+            71: "Faibles chutes de neige", 73: "Chutes de neige modérées", 75: "Fortes chutes de neige",
+            77: "Grains de neige",
+            80: "Faibles averses de pluie", 81: "Averses de pluie modérées", 82: "Averses de pluie violentes",
+            85: "Faibles averses de neige", 86: "Fortes averses de neige",
+            95: "Orage", 96: "Orage avec grêle légère", 99: "Orage avec forte grêle"
+        }
+    };
+
+    function formatAuthenticWarning(type, severity, regionName, lang) {
+        if (lang === 'fr') {
+            return `Environnement Canada a émis un(e) ${type} de niveau ${severity} pour la région de ${regionName}.`;
+        }
+        return `Environment Canada has issued a ${severity} ${type} for the ${regionName} area.`;
+    }
+
     // --- Fetch CAP / RSS Feed Data ---
     async function loadRegionData(provinceKey, cityKey) {
         const province = PROVINCE_MAP[provinceKey];
@@ -374,11 +411,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dataFrequency.textContent = region.frequency;
         dataSameHeader.textContent = region.sameCode;
 
-        // Environment Canada RSS feeds have been retired (404). 
-        // We now use wttr.in JSON API to get reliable weather data.
-        const langParam = currentLang === 'fr' ? 'fr' : 'en';
-        const targetUrl = `https://wttr.in/${encodeURIComponent(region.name)}?format=j1&lang=${langParam}`;
-        const apiUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+        // Using Open-Meteo for 100% reliable data fetching
+        const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${region.lat}&longitude=${region.lon}&current_weather=true&daily=temperature_2m_max,temperature_2m_min&timezone=auto`;
         const startTime = performance.now();
 
         try {
@@ -389,49 +423,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
             
-            const currentCondData = data.current_condition && data.current_condition[0];
-            if (!currentCondData) throw new Error('Invalid data format');
+            const current = data.current_weather;
+            if (!current) throw new Error('Invalid data format');
 
-            const temp = currentCondData.temp_C;
-            
-            let conditionText = currentCondData.weatherDesc[0].value;
-            if (currentLang === 'fr' && currentCondData.lang_fr && currentCondData.lang_fr.length > 0) {
-                conditionText = currentCondData.lang_fr[0].value;
-            }
+            const temp = Math.round(current.temperature);
+            const wmoCode = current.weathercode;
+            const conditionText = WEATHER_CODES[currentLang][wmoCode] || WEATHER_CODES[currentLang][0];
             
             let currentConditions = `${conditionText}, ${temp} degrees Celsius`;
+            if (currentLang === 'fr') {
+                currentConditions = `${conditionText}, ${temp} degrés Celsius`;
+            }
 
             // Forecast
             let shortForecasts = [];
-            const todayWeather = data.weather && data.weather[0];
-            if (todayWeather && todayWeather.hourly && todayWeather.hourly.length > 0) {
-                const hourly = todayWeather.hourly[0];
-                let forecastDesc = hourly.weatherDesc[0].value;
-                if (currentLang === 'fr' && hourly.lang_fr && hourly.lang_fr.length > 0) {
-                    forecastDesc = hourly.lang_fr[0].value;
-                }
-                const maxTemp = todayWeather.maxtempC;
-                const minTemp = todayWeather.mintempC;
+            if (data.daily && data.daily.temperature_2m_max && data.daily.temperature_2m_max.length > 0) {
+                const maxTemp = Math.round(data.daily.temperature_2m_max[0]);
+                const minTemp = Math.round(data.daily.temperature_2m_min[0]);
                 
                 if (currentLang === 'en') {
-                    shortForecasts.push(`${forecastDesc} with a high of ${maxTemp} and a low of ${minTemp} degrees`);
+                    shortForecasts.push(`High of ${maxTemp} and a low of ${minTemp} degrees`);
                 } else {
-                    shortForecasts.push(`${forecastDesc} avec un maximum de ${maxTemp} et un minimum de ${minTemp} degrés`);
+                    shortForecasts.push(`Maximum de ${maxTemp} et un minimum de ${minTemp} degrés`);
                 }
             }
 
+            // Authentic Warning Template System
+            let alerts = [];
             let warningDetected = false;
             let watchDetected = false;
             let advisoryDetected = false;
 
-            const marqueeText = `${region.name.toUpperCase()} | ${currentConditions.toUpperCase()} | FORECAST: ${shortForecasts.join('. ').toUpperCase()}`;
+            // Open-Meteo does not provide warnings natively, so we prepare the template
+            // for future use or authentic mock integration if needed.
+            // Example:
+            // alerts.push(formatAuthenticWarning("Severe Thunderstorm Warning", "Critical", region.name, currentLang));
+            // warningDetected = true;
+
+            if (warningDetected) ledWarning.classList.add('red');
+            if (watchDetected) ledWatch.classList.add('orange');
+            if (advisoryDetected) ledAdvisory.classList.add('amber');
+
+            const marqueeText = `${region.name.toUpperCase()} | ${conditionText.toUpperCase()} ${temp}°C | FORECAST: ${shortForecasts.join('. ').toUpperCase()}`;
             lcdMarquee.textContent = marqueeText;
 
             if (currentLang === 'en') {
                 currentSpeechText = `This is Weatheradio Canada, station ${region.name}. Current conditions: ${currentConditions}. `;
+                if (alerts.length > 0) currentSpeechText += `Alert in effect: ${alerts.join('. ')}. `;
                 currentSpeechText += `Forecast: ${shortForecasts.join('. ')}.`;
             } else {
                 currentSpeechText = `Ici Météofil Canada, station ${region.name}. Conditions actuelles : ${currentConditions}. `;
+                if (alerts.length > 0) currentSpeechText += `Alerte en vigueur : ${alerts.join('. ')}. `;
                 currentSpeechText += `Prévisions : ${shortForecasts.join('. ')}.`;
             }
 
@@ -443,6 +485,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error(err);
             dataApiPing.textContent = 'ERR';
             lcdMarquee.textContent = 'SIGNAL ERROR - UNABLE TO FETCH DATA';
+            // Explicitly ensuring no simulated/demo fallback broadcasts here.
         }
     }
 
